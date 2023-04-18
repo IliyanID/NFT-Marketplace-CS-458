@@ -29,7 +29,7 @@ export const BrowseTableTr = (props:{index:number,nft:NFT}) => {
             cursor:'pointer'
         }}>
             <div style={{fontSize:'25px'}}>{props.index+1}.</div>
-            <img style={{width:'80px',height:'80px',borderRadius:'15px'}} src={props.nft.nft} alt={'test-image'}/>
+            <img style={{width:'80px',height:'80px',borderRadius:'15px'}} src={props.nft.nft} alt={'test'}/>
             <div style={{fontWeight:'bold'}}>{props.nft.owner}</div>
             <div style={{fontWeight:"bold"}}>{price} ETH</div>
             

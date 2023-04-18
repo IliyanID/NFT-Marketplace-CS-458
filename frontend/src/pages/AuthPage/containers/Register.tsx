@@ -1,6 +1,6 @@
 import { Input, Button } from "reactstrap"
 import { AuthForm, FormError, RedirectArea } from "../../../components/AuthForm"
-import { ToRegister, ToLogin, ToReset } from "../components/AuthRedirects"
+import { ToLogin, ToReset } from "../components/AuthRedirects"
 import { useState } from "react"
 
 const FormRejex = {
@@ -63,7 +63,7 @@ export const Register = () => {
         }).filter(a=>a!=='')
 
         if(hideError){
-            return error.length == 0
+            return error.length === 0
         }
         if(errors.length > 0)
             setError(errors[0])

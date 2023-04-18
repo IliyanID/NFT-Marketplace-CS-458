@@ -7,7 +7,9 @@ export const Marketplace = () => {
             display:'grid',
             gridTemplateRows:'50vh 1fr',
             maxHeight:'100vh',
-            overflow:'auto'
+            overflow:'auto',
+            justifyContent:'center',
+            margin:'20px'
         }}>
             <SpotlightDisplay/>
             <BrowseItems/>

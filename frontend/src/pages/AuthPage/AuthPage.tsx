@@ -1,8 +1,7 @@
-import { Route, Router, RouterProvider, Routes, createBrowserRouter } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { Login } from "./containers/Login"
 import { Register } from "./containers/Register"
 import { ResetPassword } from "./containers/ResetPassword"
-import { ErrorPage } from "../Errorpage/ErrorPage"
 
 export const AuthPage = () => {
     return (

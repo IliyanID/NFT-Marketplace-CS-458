@@ -8,9 +8,10 @@ export const SpotlightDetails = () => {
             justifyContent:'center',
             alignItems:'center',
             flexDirection:'column',
-            margin:'20px'
+            margin:'20px',
+            position:'relative'
         }}>
-            <img style={{width:'100px',height:'100px',border:'3px solid var(--secondary-color)',borderRadius:'20px'}} src={spotlightImage} alt="spotliht-image"/>
+            <img style={{width:'100px',height:'100px',border:'3px solid var(--secondary-color)',borderRadius:'20px'}} src={spotlightImage} alt="spotlightcube"/>
             <div style={{fontSize:'50px'}}>Gemesis</div>
             <div>By OpenSeaPro</div>
             <MintedButton/>
@@ -25,7 +26,7 @@ export const MintedButton = () => {
                 backgroundColor:'var(--accent-color)',
                 fontSize:'24px',
                 borderRadius:'20px',
-                padding:'10px',
+                padding:'10px 15px',
                 marginTop:'20px',
                 display:'flex',
                 justifyContent:'center',
