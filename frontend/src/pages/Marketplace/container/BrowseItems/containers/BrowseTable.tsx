@@ -21,7 +21,7 @@ export const BrowseTableTr = (props:{index:number,nft:NFT}) => {
         price = '< 0.01'
     return (
         <div key={id} style={{
-            height:'150px',
+            height:'100px',
             display:'grid',
             gridTemplateColumns:' 40px fit-content(200px) 1fr 1fr',
             alignItems:'center',
