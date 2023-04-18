@@ -35,7 +35,7 @@ function Box(props:{position:any, color:any}) {
   
     //@ts-ignore
     return (<mesh position={position} ref={ref}>
-        <boxBufferGeometry args={[1, 1, 1]} attach="geometry" />
+        <boxBufferGeometry args={[1, 1, .1]} attach="geometry" />
         <meshPhongMaterial color={color} attach="material" />
       </mesh>
     )
