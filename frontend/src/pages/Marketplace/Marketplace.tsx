@@ -1,5 +1,5 @@
 import { BrowseItems } from "./container/BrowseItems/BrowseItems"
-import { SpotlightDisplay } from "./container/SpotlightDisplay"
+import { SpotlightDisplay } from "./container/SpotlightDisplay/SpotlightDisplay"
 
 export const Marketplace = () => {
     return (
