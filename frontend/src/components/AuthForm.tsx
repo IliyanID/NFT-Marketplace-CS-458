@@ -3,6 +3,7 @@ import { FormEvent } from "react"
 
 export const AuthForm = (props:{children:JSX.Element[],onSubmit:(e:FormEvent)=>void}) => {
     return (
+        
         <motion.form
             initial={{opacity:0}}
             animate={{opacity:1}}
@@ -17,11 +18,13 @@ export const AuthForm = (props:{children:JSX.Element[],onSubmit:(e:FormEvent)=>v
                 alignItems:'center',
                 flexDirection:'column',
                 gap:'15px',
-                padding:'10px'
+                padding:'10px',
+                margin:'auto'
             }}
         >
             {props.children}
         </motion.form>
+        
     )
 }
 

@@ -1,6 +1,6 @@
 import { Input, Button } from "reactstrap"
-import { AuthForm, FormError, RedirectArea } from "../../components/AuthForm"
-import { ToRegister, ToLogin, ToReset } from "./components/AuthRedirects"
+import { AuthForm, FormError, RedirectArea } from "../../../components/AuthForm"
+import { ToRegister, ToLogin, ToReset } from "../components/AuthRedirects"
 import { useState } from "react"
 
 const FormRejex = {
@@ -73,30 +73,18 @@ export const Register = () => {
 
     }
     return (
-
-        <div style={{
-            display:'flex',
-            alignItems:'center',
-            justifyContent:'center',
-            height:'100vh',
-            width:'100vw',
-            overflow:'hidden'
-        }}>
-            <AuthForm onSubmit={()=>{}}>
-                <h2>New Account</h2>
-                <Input value={formState['username']} onChange={(e)=>validateForm('username',e.target.value)} required placeholder="Username"/>
-                <Input value={formState['password']} onChange={(e)=>validateForm('password',e.target.value)} required type="password" placeholder="Password"/>
-                <Input value={formState['confirmed_password']} onChange={(e)=>validateForm('confirmed_password',e.target.value)} required type="password" placeholder="Confirm Password"/>
-                <Button disabled={error.length > 0 || validateForm('username','',true)} type="submit" color="primary">Register</Button>
-                <FormError error={error}/>
-                <RedirectArea>
-                    <ToLogin/>
-                    <ToReset/>
-                </RedirectArea>
-        
-            </AuthForm>
-        </div>
-        
+        <AuthForm onSubmit={()=>{}}>
+            <Input value={formState['username']} onChange={(e)=>validateForm('username',e.target.value)} required placeholder="Username"/>
+            <Input value={formState['password']} onChange={(e)=>validateForm('password',e.target.value)} required type="password" placeholder="Password"/>
+            <Input value={formState['confirmed_password']} onChange={(e)=>validateForm('confirmed_password',e.target.value)} required type="password" placeholder="Confirm Password"/>
+            <Button disabled={error.length > 0 || validateForm('username','',true)} type="submit" color="primary">Register Account</Button>
+            <FormError error={error}/>
+            <RedirectArea>
+                <ToLogin/>
+                <ToReset/>
+            </RedirectArea>
+    
+        </AuthForm>
     )
 
 }

@@ -1,34 +1,22 @@
-import { Login } from './pages/AuthPage/Login';
 import { AnimatePresence } from 'framer-motion';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { ErrorPage } from './pages/Errorpage/ErrorPage';
-import { Register } from './pages/AuthPage/Register';
-import { ResetPassword } from './pages/AuthPage/ResetPassword';
+import { AuthPage } from './pages/AuthPage/AuthPage';
+import { Marketplace } from './pages/Marketplace/Marketplace';
 
 function App() {
   return (
     <AnimatePresence>
-      <RouterProvider router={router}/>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Marketplace/>}/>
+          <Route path="auth/*" element={<AuthPage/>}/>
+          <Route path="*" element={<ErrorPage error="404 Not Found"/>}/>
+        </Routes>
+      </BrowserRouter>
     </AnimatePresence>
   );
 }
 
-const router = createBrowserRouter([
-  {
-    path:'/login',
-    element:<Login/>
-  },
-  {
-    path:'/register',
-    element:<Register/>
-  },
-  {
-    path:'/resetpassword',
-    element:<ResetPassword/>
-  },
-  {
-    errorElement:<ErrorPage error='404 Not Found'/>
-  }
-])
 
 export default App;
