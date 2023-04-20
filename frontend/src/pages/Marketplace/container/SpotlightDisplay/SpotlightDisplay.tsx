@@ -13,7 +13,7 @@ export const SpotlightDisplay = (props:{setHoveredDisplay:(index:number)=>void})
             position:'relative',
             overflow:'hidden',
             maxHeight:'100%',
-            width:'80vw',
+            width:'90vw',
             display:'flex',
             flexFlow:'row',
             gap:'20px'

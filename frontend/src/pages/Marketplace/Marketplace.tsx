@@ -32,7 +32,7 @@ export const Marketplace = () => {
                     display:'grid',
                     gridTemplateRows:'fit-content(400px) 40vh 1fr',
                     gap:'20px',
-                    maxHeight:'100vh',
+                    height:'100vh',
                     overflowY:'auto',
                     overflowX:'hidden',
                     justifyContent:'center',

@@ -7,10 +7,11 @@ import { Button } from 'reactstrap'
 export const AssetPage = () => {
     return (
         <div style={{
-            width:'100vw',
             height:'100vh',
             display:'grid',
-            gridTemplateRows:'fit-content(400px) 1fr'
+            gridTemplateRows:'fit-content(400px) 1fr',
+            width:'90vw',
+            margin:'0 auto'
         }}>
             <Header/>
             <div style={{
@@ -84,7 +85,8 @@ const Purchase = () => {
 const ImagePreview = () => {
     return (
         <img
-            style={{gridArea:'picture',borderRadius:'20px'}}
+            style={{gridArea:'picture',borderRadius:'20px',overflow:'hidden'}}
+            
             src={image}
         />
     )
