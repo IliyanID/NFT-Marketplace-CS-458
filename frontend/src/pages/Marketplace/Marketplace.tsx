@@ -1,21 +1,30 @@
+import { useState } from "react"
 import { Header } from "../../components/Header"
 import { SpotlightDisplayMock } from "../../static/mock/SpotlightDisplayMock"
 import { BrowseItems } from "./container/BrowseItems/BrowseItems"
 import { SpotlightDisplay } from "./container/SpotlightDisplay/SpotlightDisplay"
+import { motion } from "framer-motion"
 
 
 export const Marketplace = () => {
+    const [HoveredDisplay,setHoveredDisplay] = useState(0)
     return (
         <div >
 
-            <img style={{
+            <motion.img 
+            key={SpotlightDisplayMock[HoveredDisplay].owner}
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+            exit={{opacity:0}}
+            transition={{duration:1}}
+            style={{
                 height:'40vh',
                 width:'100vw',
                 zIndex:'0',
                 position:'absolute',
                 top:'0px',
                 left:'0px'
-            }} src={SpotlightDisplayMock[0].nft} alt={SpotlightDisplayMock[0].owner}/>
+            }} src={SpotlightDisplayMock[HoveredDisplay].nft} alt={SpotlightDisplayMock[HoveredDisplay].owner}/>
             <div 
                 className="BlurEffect"
 
@@ -31,7 +40,7 @@ export const Marketplace = () => {
                 }}
             >
                 <Header/>
-                <SpotlightDisplay/>
+                <SpotlightDisplay setHoveredDisplay={setHoveredDisplay}/>
                 <BrowseItems/>
             </div>
         </div>

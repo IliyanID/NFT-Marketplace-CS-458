@@ -14,7 +14,7 @@ export const SpotlightDisplayMock = [
     {
         id:1,
         owner:'Wild at Heart, 2021',
-        nft:testImage8,
+        nft:testImage11,
         price:.05
     },
     {
@@ -23,7 +23,7 @@ export const SpotlightDisplayMock = [
         nft:testImage9,
         price:.33
     },
-    {
+    /*{
         id:3,
         owner: 'Shadow of Doubt, 2022',
         nft:testImage10,
@@ -34,5 +34,5 @@ export const SpotlightDisplayMock = [
         owner: 'A walk, 2023',
         nft:testImage11,
         price:.44
-    }
+    }*/
 ]

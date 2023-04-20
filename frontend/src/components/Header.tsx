@@ -1,8 +1,7 @@
 import { Button, DropdownItem, DropdownMenu, DropdownToggle, Input, InputGroup, UncontrolledDropdown } from "reactstrap"
-import './Header.css'
 import { BiCartAlt, BiLogIn, BiSearch, BiSliderAlt, BiUser, BiUserCircle } from 'react-icons/bi'
 
-export const Header = () => {
+export const Header = (props:{style?:React.CSSProperties}) => {
 
     return (
         <div
@@ -12,14 +11,19 @@ export const Header = () => {
             padding:'10px',
             display:'grid',
             gridTemplateColumns:'fit-content(400px) 1fr fit-content(200px) fit-content(200px)',
-            gap:'40px'
+            gap:'40px',
+            ...props.style
         }}>
-            <div style={{
+            <div 
+            onClick={()=>window.location.href='/'}
+            style={{
                 fontWeight:'bolder',
                 display:'flex',
                 justifyContent:'center',
                 alignItems:'center',
-                fontSize:'25px'
+                fontSize:'25px',
+                cursor:'pointer',
+                userSelect:'none'
             }}>NFT Marketplace</div>
             <InputGroup>
                 <Button><BiSearch size={25}/></Button>

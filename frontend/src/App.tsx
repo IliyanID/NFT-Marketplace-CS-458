@@ -4,6 +4,7 @@ import { ErrorPage } from './pages/Errorpage/ErrorPage';
 import { AuthPage } from './pages/AuthPage/AuthPage';
 import { Marketplace } from './pages/Marketplace/Marketplace';
 import { UserContextProvider } from './context/UserContext';
+import { AssetPage } from './pages/Asset/AssetPage';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Marketplace/>}/>
+            <Route path="asset/*" element={<AssetPage/>}/>
             <Route path="auth/*" element={<AuthPage/>}/>
             <Route path="*" element={<ErrorPage error="404 Not Found"/>}/>
           </Routes>

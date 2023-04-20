@@ -5,7 +5,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Button } from 'reactstrap';
 import { SpotlightDisplayMock } from '../../../../static/mock/SpotlightDisplayMock';
 import { motion } from 'framer-motion';
-export const SpotlightDisplay = () => {
+export const SpotlightDisplay = (props:{setHoveredDisplay:(index:number)=>void}) => {
     
     return (
         <div style={{
@@ -23,6 +23,7 @@ export const SpotlightDisplay = () => {
                     const id = `ScrollSpotlight=${index}`
                     return (
                         <div 
+                            onMouseEnter={()=>props.setHoveredDisplay(index)}
                             id={id}
                             key={id}
                             style={{
@@ -35,6 +36,7 @@ export const SpotlightDisplay = () => {
                                 justifyContent:'center',
                                 cursor:'pointer'
                             }}
+                            onClick={()=>window.location.href=`/asset/${nft.id}`}
                         >
          
                             <motion.img 

@@ -22,6 +22,7 @@ export const BrowseTableTr = (props:{index:number,nft:NFT}) => {
         price = '< 0.01'
     return (
         <motion.div key={id} 
+            onClick={()=>window.location.href=`/asset/${props.nft.id}`}
             whileHover={{backgroundColor:'var(--accent-color)'}}
             style={{
                 height:'100px',
