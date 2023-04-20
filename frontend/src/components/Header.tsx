@@ -1,5 +1,5 @@
 import { Button, DropdownItem, DropdownMenu, DropdownToggle, Input, InputGroup, UncontrolledDropdown } from "reactstrap"
-import { BiCartAlt, BiLogIn, BiSearch, BiSliderAlt, BiUser, BiUserCircle } from 'react-icons/bi'
+import { BiCartAlt, BiLogIn, BiLogOut, BiSearch, BiSliderAlt, BiUser, BiUserCircle } from 'react-icons/bi'
 import { Link, useNavigate } from "react-router-dom"
 import { useToggle } from "../hooks/useToggle"
 import { ConnectWalletModal } from "./modals/ConnectWalletModal"
@@ -55,6 +55,7 @@ export const WalletButton = () => {
     const [newWalletModal,toggleNewWalletModal] = useToggle()
     const [manageWalletModal,toggleManageWalletModal] = useToggle()
     const userState = useContext(UserContext)
+    const navigate = useNavigate()
 
     if(userState.logged_in === true && userState.session.wallet_is_connected)
         return (
@@ -63,40 +64,63 @@ export const WalletButton = () => {
                 <ManageWalletModal isOpen={manageWalletModal} toggle={toggleManageWalletModal}/>
             </>
         )
-    return (
-        <>
-            <Button onClick={toggleNewWalletModal}>Connect Wallet</Button>
-            <ConnectWalletModal isOpen={newWalletModal} toggle={toggleNewWalletModal}/>
-        </>
-    )
+    
+        return (
+            <>
+                <Button 
+                    onClick={()=>{
+                        if(userState.logged_in)
+                            toggleNewWalletModal()
+                        else
+                            navigate('/auth/login')
+
+                    }}
+                >
+                        Connect Wallet
+                </Button>
+                <ConnectWalletModal isOpen={newWalletModal} toggle={toggleNewWalletModal}/>
+            </>
+        )
 }
 
 export const UserDropDown = () => {
     const navigate = useNavigate()
+    const userState = useContext(UserContext)
     const DropDownOptions = [
         {
             name:'Profile',
             icon:<BiUser size={25}/>,
             onClick:()=>{},
-            meta:{}
+            meta:{},
+            authenticated:true
         },
         {
             name:'Settings',
             icon:<BiSliderAlt size={25}/>,
             onClick:()=>{},
-            meta:{}
+            meta:{},
+            authenticated:true
         },
         {
             name:'',
             icon:<></>,
             onClick:()=>{},
-            meta:{divider:true}
+            meta:{divider:true},
+            authenticated:true
         },
         {
             name:'Logout',
-            icon:<BiLogIn size={25}/>,
+            icon:<BiLogOut size={25}/>,
             onClick:()=>{navigate('/auth/login')},
-            meta:{}
+            meta:{},
+            authenticated:true
+        },
+        {
+            name:'Login',
+            icon:<BiLogIn size={25}/>,
+            onClick:()=>{navigate('auth/login')},
+            meta:{},
+            authenticated:false
         }
     ]
     return (
@@ -106,6 +130,8 @@ export const UserDropDown = () => {
                 {
                     DropDownOptions.map((option,index)=>{
                         const id = `DropDownUserProfile=${index}`
+
+                        if(userState.logged_in === option.authenticated)
                         return (
                             <DropdownItem  
                                 {...option.meta}
