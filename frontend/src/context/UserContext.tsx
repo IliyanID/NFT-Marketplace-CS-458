@@ -21,9 +21,9 @@ export type UserLoggedOut = {
     LogOut:()=>void,
 }
 
+export const DefaultUserState:UserLoggedIn|UserLoggedOut = {logged_in:false,LogIn:()=>{},LogOut:()=>{}}
 
-
-export const UserContext = createContext<UserLoggedIn|UserLoggedOut>({logged_in:false,LogIn:()=>{},LogOut:()=>{}})
+export const UserContext = createContext<UserLoggedIn|UserLoggedOut>(DefaultUserState)
 
 export const UserContextProvider = (props:{children:JSX.Element | JSX.Element[]}) => {
 
