@@ -111,7 +111,7 @@ export const UserDropDown = () => {
         {
             name:'Logout',
             icon:<BiLogOut size={25}/>,
-            onClick:()=>{navigate('/auth/login')},
+            onClick:()=>{userState.LogOut(); navigate('/auth/login')},
             meta:{},
             authenticated:true
         },
