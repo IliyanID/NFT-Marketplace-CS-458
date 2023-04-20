@@ -13,7 +13,8 @@ export const ConnectWalletModal = (props:CommonModalProps) => {
                 <h2>Connect your wallet</h2>
                 <small>
                     If you don't have a 
-                    <a style={{textDecoration:'none'}} target={'_blank'} href="https://www.coinbase.com/learn/crypto-basics/what-is-a-crypto-wallet"> wallet </a> 
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
+                    <a style={{textDecoration:'none'}} rel="noreferrer" target={'_blank'} href="https://www.coinbase.com/learn/crypto-basics/what-is-a-crypto-wallet"> wallet </a> 
                     yet, you'll need to create one.
                 </small>
             </ModalHeader>

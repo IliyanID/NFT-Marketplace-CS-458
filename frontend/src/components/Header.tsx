@@ -1,6 +1,6 @@
 import { Button, DropdownItem, DropdownMenu, DropdownToggle, Input, InputGroup, UncontrolledDropdown } from "reactstrap"
 import { BiCartAlt, BiLogIn, BiLogOut, BiSearch, BiSliderAlt, BiUser, BiUserCircle } from 'react-icons/bi'
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useToggle } from "../hooks/useToggle"
 import { ConnectWalletModal } from "./modals/ConnectWalletModal"
 import { useContext } from "react"
@@ -132,22 +132,24 @@ export const UserDropDown = () => {
                         const id = `DropDownUserProfile=${index}`
 
                         if(userState.logged_in === option.authenticated)
-                        return (
-                            <DropdownItem  
-                                {...option.meta}
-                                onClick={option.onClick}
-                                id={id}
-                                key={id}
-                                style={{
-                                    display:'grid',
-                                    gridTemplateColumns:'20px 20px',
-                                    gap:'30px'
-                                }}
-                            >
-                                {option.icon}
-                                <div>{option.name}</div>
-                            </DropdownItem>
-                        )
+                            return (
+                                <DropdownItem  
+                                    {...option.meta}
+                                    onClick={option.onClick}
+                                    id={id}
+                                    key={id}
+                                    style={{
+                                        display:'grid',
+                                        gridTemplateColumns:'20px 20px',
+                                        gap:'30px'
+                                    }}
+                                >
+                                    {option.icon}
+                                    <div>{option.name}</div>
+                                </DropdownItem>
+                            )
+
+                        return <></>
                     })
                 }
             </DropdownMenu>

@@ -10,21 +10,7 @@ export const Marketplace = () => {
     const [HoveredDisplay,setHoveredDisplay] = useState(0)
     return (
         <div >
-
-            <motion.img 
-            key={SpotlightDisplayMock[HoveredDisplay].owner}
-            initial={{opacity:0}}
-            animate={{opacity:1}}
-            exit={{opacity:0}}
-            transition={{duration:1}}
-            style={{
-                height:'40vh',
-                width:'100vw',
-                zIndex:'0',
-                position:'absolute',
-                top:'0px',
-                left:'0px'
-            }} src={SpotlightDisplayMock[HoveredDisplay].nft} alt={SpotlightDisplayMock[HoveredDisplay].owner}/>
+            <BackgroundBlurImage HoveredDisplay={HoveredDisplay}/>
             <div 
                 className="BlurEffect"
 
@@ -44,5 +30,24 @@ export const Marketplace = () => {
                 <BrowseItems/>
             </div>
         </div>
+    )
+}
+
+const BackgroundBlurImage = (props:{HoveredDisplay:number}) => {
+    return (
+        <motion.img 
+            key={SpotlightDisplayMock[props.HoveredDisplay].owner}
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+            exit={{opacity:0}}
+            transition={{duration:1}}
+            style={{
+                height:'40vh',
+                width:'100vw',
+                zIndex:'0',
+                position:'absolute',
+                top:'0px',
+                left:'0px'
+            }} src={SpotlightDisplayMock[props.HoveredDisplay].nft} alt={SpotlightDisplayMock[props.HoveredDisplay].owner}/>
     )
 }

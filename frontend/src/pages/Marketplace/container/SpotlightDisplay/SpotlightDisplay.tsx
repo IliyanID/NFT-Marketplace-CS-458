@@ -1,8 +1,4 @@
-import { useRef } from 'react';
-import { SpotlightDetails } from './containers/SpotlightDetails'
 import './pulsatingDot.css'
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Button } from 'reactstrap';
 import { SpotlightDisplayMock } from '../../../../static/mock/SpotlightDisplayMock';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -78,7 +74,7 @@ export const SpotlightDisplay = (props:{setHoveredDisplay:(index:number)=>void})
 
 */
 
-function Box(props:{position:any, color:any}) {
+/*function Box(props:{position:any, color:any}) {
     const {position,color} = props
     const ref = useRef()
     //@ts-ignore
@@ -90,7 +86,7 @@ function Box(props:{position:any, color:any}) {
         <meshPhongMaterial color={color} attach="material" />
       </mesh>
     )
-  }
+  }*/
 
 
 

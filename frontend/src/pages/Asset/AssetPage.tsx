@@ -86,7 +86,7 @@ const ImagePreview = () => {
     return (
         <img
             style={{gridArea:'picture',borderRadius:'20px',overflow:'hidden'}}
-            
+            alt='Asset'
             src={image}
         />
     )

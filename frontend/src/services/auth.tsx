@@ -1,6 +1,5 @@
 import { useContext, useState } from "react"
-import { useToggle } from "../hooks/useToggle"
-import { DefaultUserState, UserContext } from "../context/UserContext"
+import { UserContext } from "../context/UserContext"
 
 export const useAuth = () => {
     const [loading,setLoading] = useState(false)

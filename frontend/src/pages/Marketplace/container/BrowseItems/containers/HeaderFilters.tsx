@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Button, InputGroup, UncontrolledPopover } from "reactstrap"
+import { Button, InputGroup } from "reactstrap"
 
 export const HeaderFilters = () => {
     return (
