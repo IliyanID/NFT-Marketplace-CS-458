@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { NFT } from "../../../../../types/NFT"
+import { useNavigate } from "react-router-dom"
 
 export const BrowseTable = (props:{children:JSX.Element[]}) => {
     return(
@@ -20,9 +21,10 @@ export const BrowseTableTr = (props:{index:number,nft:NFT}) => {
     let price = String(props.nft.price)
     if(props.nft.price <= .01)
         price = '< 0.01'
+    const navigate = useNavigate()
     return (
         <motion.div key={id} 
-            onClick={()=>window.location.href=`/asset/${props.nft.id}`}
+            onClick={()=>navigate(`/asset/${props.nft.id}`)}
             whileHover={{backgroundColor:'var(--accent-color)'}}
             style={{
                 height:'100px',

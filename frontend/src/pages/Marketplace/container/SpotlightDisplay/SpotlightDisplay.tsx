@@ -5,8 +5,9 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Button } from 'reactstrap';
 import { SpotlightDisplayMock } from '../../../../static/mock/SpotlightDisplayMock';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 export const SpotlightDisplay = (props:{setHoveredDisplay:(index:number)=>void}) => {
-    
+    const navigate = useNavigate()
     return (
         <div style={{
             borderRadius:'20px',
@@ -36,7 +37,7 @@ export const SpotlightDisplay = (props:{setHoveredDisplay:(index:number)=>void})
                                 justifyContent:'center',
                                 cursor:'pointer'
                             }}
-                            onClick={()=>window.location.href=`/asset/${nft.id}`}
+                            onClick={()=>navigate(`/asset/${nft.id}`)}
                         >
          
                             <motion.img 

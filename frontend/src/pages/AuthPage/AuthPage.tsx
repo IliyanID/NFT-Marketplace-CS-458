@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useNavigate } from "react-router-dom"
 import { Login } from "./containers/Login"
 import { Register } from "./containers/Register"
 import { ResetPassword } from "./containers/ResetPassword"
@@ -31,8 +31,11 @@ export const AuthPage = () => {
 }
 
 export const Title = () => {
+    const navigate = useNavigate()
     return (
-        <div style={{
+        <div 
+        onClick={()=>navigate('/')}
+        style={{
           alignSelf:'flex-start',
           width:'100vw',
           paddingTop:'30px',
@@ -41,6 +44,8 @@ export const Title = () => {
           justifyContent:'center',
           flexDirection:'column',
           fontFamily:'Rajdhani, Orbitron, sans-serif',
+          cursor:'pointer',
+          userSelect:'none'
         }}>
           <div style={{
             fontFamily:'Rajdhani, Orbitron, sans-serif',

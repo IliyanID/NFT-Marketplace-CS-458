@@ -1,8 +1,9 @@
 import { Button, DropdownItem, DropdownMenu, DropdownToggle, Input, InputGroup, UncontrolledDropdown } from "reactstrap"
 import { BiCartAlt, BiLogIn, BiSearch, BiSliderAlt, BiUser, BiUserCircle } from 'react-icons/bi'
+import { Link, useNavigate } from "react-router-dom"
 
 export const Header = (props:{style?:React.CSSProperties}) => {
-
+    const navigate = useNavigate()
     return (
         <div
         style={{
@@ -15,7 +16,8 @@ export const Header = (props:{style?:React.CSSProperties}) => {
             ...props.style
         }}>
             <div 
-            onClick={()=>window.location.href='/'}
+            onClick={()=>navigate('/')}
+            
             style={{
                 fontWeight:'bolder',
                 display:'flex',
@@ -23,7 +25,9 @@ export const Header = (props:{style?:React.CSSProperties}) => {
                 alignItems:'center',
                 fontSize:'25px',
                 cursor:'pointer',
-                userSelect:'none'
+                userSelect:'none',
+                color:'var(--secondary-color)',
+                textDecoration:'none'
             }}>NFT Marketplace</div>
             <InputGroup>
                 <Button><BiSearch size={25}/></Button>
@@ -39,6 +43,7 @@ export const Header = (props:{style?:React.CSSProperties}) => {
 }
 
 export const UserDropDown = () => {
+    const navigate = useNavigate()
     const DropDownOptions = [
         {
             name:'Profile',
@@ -61,7 +66,7 @@ export const UserDropDown = () => {
         {
             name:'Logout',
             icon:<BiLogIn size={25}/>,
-            onClick:()=>{window.location.href='/auth/login'},
+            onClick:()=>{navigate('/auth/login')},
             meta:{}
         }
     ]
