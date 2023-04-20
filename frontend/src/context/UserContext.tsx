@@ -10,7 +10,8 @@ export type UserLoggedIn = {
         username:string,
         first_name:string,
         last_name:string,
-        id:number
+        id:number,
+        wallet_is_connected:boolean
     }
 
     

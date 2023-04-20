@@ -1,9 +1,17 @@
 import { Button, DropdownItem, DropdownMenu, DropdownToggle, Input, InputGroup, UncontrolledDropdown } from "reactstrap"
 import { BiCartAlt, BiLogIn, BiSearch, BiSliderAlt, BiUser, BiUserCircle } from 'react-icons/bi'
 import { Link, useNavigate } from "react-router-dom"
+import { useToggle } from "../hooks/useToggle"
+import { ConnectWalletModal } from "./modals/ConnectWalletModal"
+import { useContext } from "react"
+import { UserContext } from "../context/UserContext"
+import { ManageWalletModal } from "./modals/ManageWalletModal"
 
 export const Header = (props:{style?:React.CSSProperties}) => {
     const navigate = useNavigate()
+
+ 
+
     return (
         <div
         style={{
@@ -34,11 +42,32 @@ export const Header = (props:{style?:React.CSSProperties}) => {
                 <Input placeholder="Search items, collections, and accounts"/>
             </InputGroup>
             <InputGroup>
-                <Button>Connect Wallet</Button>
+                <WalletButton/>
                 <UserDropDown/>
             </InputGroup>
             <Button><BiCartAlt size={25}/></Button>
+
         </div>
+    )
+}
+
+export const WalletButton = () => {
+    const [newWalletModal,toggleNewWalletModal] = useToggle()
+    const [manageWalletModal,toggleManageWalletModal] = useToggle()
+    const userState = useContext(UserContext)
+
+    if(userState.logged_in === true && userState.session.wallet_is_connected)
+        return (
+            <>
+                <Button onClick={toggleManageWalletModal}>Manage Wallet</Button>
+                <ManageWalletModal isOpen={manageWalletModal} toggle={toggleManageWalletModal}/>
+            </>
+        )
+    return (
+        <>
+            <Button onClick={toggleNewWalletModal}>Connect Wallet</Button>
+            <ConnectWalletModal isOpen={newWalletModal} toggle={toggleNewWalletModal}/>
+        </>
     )
 }
 

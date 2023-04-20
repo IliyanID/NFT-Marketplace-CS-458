@@ -6,6 +6,16 @@
     --neon-green-color: #3eff00;
     --neon-blue-color: #0D6EFD;
   }
+    .modal-content{
+      background-color: var(--primary-color)!important;
+    }
+      .modal-header{
+        border-color: var(--accent-color)!important;
+      }
+      .modal-footer{
+        border-color: var(--accent-color)!important;
+
+      }
 
   *{
     color:var(--secondary-color);
