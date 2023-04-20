@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #2f2e2e;
+    --primary-color: #202225;
     --secondary-color: #d6d2d2;
     --accent-color: #807e7e;
     --light-accent-color: #ffa94d;
@@ -18,4 +18,12 @@
     overflow: hidden;
     background-color: var(--primary-color)!important;
   }
+
+  .BlurEffect{
+    background: rgba( 47, 47, 47, 0.25 );
+    box-shadow: 0 8px 1002px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 400px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 10px;
+}
   

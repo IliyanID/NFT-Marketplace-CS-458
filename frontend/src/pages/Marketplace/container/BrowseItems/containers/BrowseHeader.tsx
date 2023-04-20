@@ -1,4 +1,6 @@
-export const BrowseOptionHeader = (props:{children:JSX.Element[]}) => {
+import { Button, InputGroup, InputGroupText } from "reactstrap"
+
+export const BrowseOptionHeader = (props:{children:any}) => {
     return (
         <div style={{
             display:'flex',
@@ -28,3 +30,4 @@ export const BrowseOptionHeaderItem = (props:{option:string,selected:boolean,onC
         </div>
     )
 }
+

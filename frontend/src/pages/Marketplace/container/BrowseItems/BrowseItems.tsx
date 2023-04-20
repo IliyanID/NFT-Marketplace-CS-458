@@ -2,6 +2,7 @@ import { useState } from "react"
 import { BrowseOptionHeader, BrowseOptionHeaderItem } from "./containers/BrowseHeader"
 import { trendingMock } from "../../../../static/mock/trendingMock"
 import { BrowseTable, BrowseTableTr } from "./containers/BrowseTable"
+import { HeaderFilters } from "./containers/HeaderFilters"
 
 export const BrowseItems = () => {
     const BrowseOptions = ['Trending','Top']
@@ -15,6 +16,7 @@ export const BrowseItems = () => {
                 {
                     BrowseOptions.map(option=><BrowseOptionHeaderItem option={option} selected={option===selectedHeader} onClick={()=>setSelectedHeader(option)}/>)
                 }
+                <HeaderFilters/>
             </BrowseOptionHeader>
             <BrowseTable>
                 {
