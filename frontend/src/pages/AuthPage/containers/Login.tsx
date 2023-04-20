@@ -19,6 +19,8 @@ export const Login = () => {
 
     const handleFormSubmit = (e:FormEvent) => {
         e.preventDefault()
+        if(!form_complete)
+            return
         auth_api.login({username,password},()=>{
             navigate('/')
         })
