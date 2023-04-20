@@ -1,13 +1,15 @@
+import { Link } from "react-router-dom"
+
 export const ToLogin = () => {
     return (
-        <span>Back to <a style={{textDecoration:'none'}} href="/auth/login">Login?</a></span>
+        <span>Back to <Link style={{textDecoration:'none'}} to="/auth/login">Login?</Link></span>
     )
 }
 
 export const ToReset = () => {
     return (
         <span>
-            Forgot <a style={{textDecoration:'none',cursor:'pointer'}} href="/auth/resetpassword">password?</a>
+            Forgot <Link style={{textDecoration:'none',cursor:'pointer'}} to="/auth/resetpassword">password?</Link>
         </span>
     )
 }
@@ -15,7 +17,7 @@ export const ToReset = () => {
 export const ToRegister = () => {
     return (
         <span>
-            Don't have an account? <a style={{textDecoration:'none',cursor:'pointer'}} href="/auth/register">Create one</a>
+            Don't have an account? <Link style={{textDecoration:'none',cursor:'pointer'}} to="/auth/register">Create one</Link>
         </span>
     )
 }
