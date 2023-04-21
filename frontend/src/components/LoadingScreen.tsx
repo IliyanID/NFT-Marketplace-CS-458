@@ -1,10 +1,10 @@
 import { PropagateLoader } from "react-spinners"
 
-export const LoadingScreen = () => {
+export const LoadingScreen = (props:{inGrid?:boolean}) => {
     return (
         <div style={{
             width:'100%',
-            height:'100vh',
+            height:props.inGrid?'100%':'100vh',
             display:'flex',
             justifyContent:'center',
             alignItems:'center'

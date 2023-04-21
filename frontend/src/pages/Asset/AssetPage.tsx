@@ -27,10 +27,7 @@ export const AssetPage = () => {
         })
     },[])
     
-    if(api.loading)
-        return <LoadingScreen/>
-    if(NFT === undefined)
-        return <ErrorPage error='Failed to load NFT'/>
+
 
     return (
         <motion.div 
@@ -44,6 +41,17 @@ export const AssetPage = () => {
             margin:'0 auto'
         }}>
             <Header/>
+
+            {
+                (api.loading || NFT === undefined)?<LoadingScreen inGrid/>:<LoadedAssetPage NFT={NFT}/>
+            }
+  
+        </motion.div>
+    )
+}
+
+const LoadedAssetPage = (props:{NFT:NFT}) => {
+    return (
             <div style={{
                 display:'grid',
                 gridTemplateAreas:`
@@ -58,12 +66,10 @@ export const AssetPage = () => {
                 overflow:'hidden',
                 
             }}>
-                <ImagePreview NFT={NFT}/>
-                <Details NFT={NFT}/>
-                <Purchase NFT={NFT}/>
+                <ImagePreview NFT={props.NFT}/>
+                <Details NFT={props.NFT}/>
+                <Purchase NFT={props.NFT}/>
             </div>
-  
-        </motion.div>
     )
 }
 
