@@ -14,14 +14,16 @@ function App() {
   return (
     <AnimatePresence>
       <UserContextProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route index element={<MarketPlaceContextProvider><Marketplace/></MarketPlaceContextProvider>}/>
-              <Route path="asset/*" element={<AssetPage/>}/>
-              <Route path="auth/*" element={<AuthPage/>}/>
-              <Route path="*" element={<ErrorPage error="404 Not Found"/>}/>
-            </Routes>
-          </BrowserRouter>
+          <MarketPlaceContextProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route index element={<Marketplace/>}/>
+                <Route path="asset/:id" element={<AssetPage/>}/>
+                <Route path="auth/*" element={<AuthPage/>}/>
+                <Route path="*" element={<ErrorPage error="404 Not Found"/>}/>
+              </Routes>
+            </BrowserRouter>
+          </MarketPlaceContextProvider>
       </UserContextProvider>
     </AnimatePresence>
   );

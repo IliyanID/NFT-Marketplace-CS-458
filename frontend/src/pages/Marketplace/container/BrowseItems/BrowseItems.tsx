@@ -1,12 +1,13 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { BrowseOptionHeader, BrowseOptionHeaderItem } from "./containers/BrowseHeader"
-import { trendingMock } from "../../../../static/mock/trendingMock"
 import { BrowseTable, BrowseTableTr } from "./containers/BrowseTable"
 import { HeaderFilters } from "./containers/HeaderFilters"
+import { MarketPlaceContext } from "src/context/MarketPlaceContext"
 
 export const BrowseItems = () => {
     const BrowseOptions = ['Trending','Top']
     const [selectedHeader,setSelectedHeader] = useState(BrowseOptions[0])
+    const state = useContext(MarketPlaceContext)
     return (
         <div style={{
             display:'grid',
@@ -20,7 +21,7 @@ export const BrowseItems = () => {
             </BrowseOptionHeader>
             <BrowseTable>
                 {
-                    trendingMock.map((nft,index)=>{
+                    state.BrowseItems.map((nft,index)=>{
                         return <BrowseTableTr nft={nft} index={index}/>
                     })
                 }

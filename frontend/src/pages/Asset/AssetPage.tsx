@@ -1,12 +1,41 @@
 import { useEffect, useState } from 'react'
 import { Header } from '../../components/Header'
-import image from '../../static/images/test_image7.avif'
-import { ethToUsd } from '../../utils/ethToUsd'
 import { Button } from 'reactstrap'
+import { useMarketPlace } from 'src/services/marketplace'
+import { NFT } from 'src/CommonTypes/CommonTypes'
+import { LoadingScreen } from 'src/components/LoadingScreen'
+import { motion } from 'framer-motion'
+import { ErrorPage } from '../Errorpage/ErrorPage'
+import { useParams, useNavigate } from 'react-router-dom'
 
 export const AssetPage = () => {
+    const api = useMarketPlace()
+    const [NFT,setNFT] = useState<NFT|undefined>()
+    const { id } = useParams();
+    const navigate = useNavigate()
+    const id_is_invalid = id === undefined || isNaN(parseInt(id))
+    useEffect(()=>{
+        if(id_is_invalid){
+            navigate('/')
+            return
+        }
+        api.getAsset(parseInt(id),(response)=>{
+            console.log(response)
+            if(response.NFT)
+                setNFT(response.NFT)
+        })
+    },[])
+    
+    if(api.loading)
+        return <LoadingScreen/>
+    if(NFT === undefined)
+        return <ErrorPage error='Failed to load NFT'/>
+
     return (
-        <div style={{
+        <motion.div 
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        style={{
             height:'100vh',
             display:'grid',
             gridTemplateRows:'fit-content(400px) 1fr',
@@ -28,31 +57,24 @@ export const AssetPage = () => {
                 overflow:'hidden',
                 
             }}>
-                <ImagePreview/>
-                <Details/>
-                <Purchase/>
+                <ImagePreview NFT={NFT}/>
+                <Details NFT={NFT}/>
+                <Purchase NFT={NFT}/>
             </div>
   
-        </div>
+        </motion.div>
     )
 }
 
-const Details = () => {
+const Details = (props:{NFT:NFT}) => {
     return (
         <div style={{gridArea:'details',padding:'20px',fontSize:'40px',fontWeight:'bolder'}}>
-            Sunset Bullivard, 2020 #0
+            {props.NFT.name}, {props.NFT.owner} #{props.NFT.id}
         </div>
     )
 }
 
-const Purchase = () => {
-    const eth = .5
-
-    const [usd,setUsd] = useState(0)
-    useEffect(()=>{
-        ethToUsd(eth).then(price=>setUsd(price))
-    },[])
-
+const Purchase = (props:{NFT:NFT}) => {
     return (
         <div 
             style={{
@@ -70,8 +92,8 @@ const Purchase = () => {
         >
             <div style={{color:'var(--accent-color)',width:'100%',fontSize:'20px'}}>Current Price:</div>
             <div style={{width:'100%',display:'flex',alignItems:'center',gap:'20px'}}>
-                <h1 style={{fontWeight:'bolder'}}>{eth} ETH</h1>
-                <div style={{color:'var(--accent-color)'}}>${usd}</div>
+                <h1 style={{fontWeight:'bolder'}}>{props.NFT.priceETH} ETH</h1>
+                <div style={{color:'var(--accent-color)'}}>${props.NFT.priceUSD}</div>
             </div>
             <div style={{display:'flex',gap:'20px',width:'100%',marginTop:'20px'}}>
                 <Button style={{width:'100%'}} color="primary">Buy</Button>
@@ -82,12 +104,12 @@ const Purchase = () => {
     )
 }
 
-const ImagePreview = () => {
+const ImagePreview = (props:{NFT:NFT}) => {
     return (
         <img
             style={{gridArea:'picture',borderRadius:'20px',overflow:'hidden'}}
-            alt='Asset'
-            src={image}
+            alt={props.NFT.name}
+            src={props.NFT.nft_image}
         />
     )
 }

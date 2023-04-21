@@ -5,6 +5,7 @@ import { SpotlightDisplay } from "./container/SpotlightDisplay/SpotlightDisplay"
 import { motion } from "framer-motion"
 import { MarketPlaceContext } from "../../context/MarketPlaceContext"
 import { useMarketPlace } from "../../services/marketplace"
+import { LoadingScreen } from "src/components/LoadingScreen"
 
 
 export const Marketplace = () => {
@@ -14,14 +15,21 @@ export const Marketplace = () => {
 
     useEffect(()=>{
         api.getMarketPlace((response)=>{
+            let newState = {...state}
             if(response.BrowseItems && response.BrowseItems.length > 0)
-                state.setBrowseItems(response.BrowseItems)
+                newState.BrowseItems = response.BrowseItems
             if(response.Spotlight && response.Spotlight.length > 0)
-                state.setSpotLight(response.Spotlight)
+                newState.Spotlight = response.Spotlight
+            state.setState(newState)
         })
     },[])
+    if(api.loading && (state.BrowseItems.length === 0 || state.Spotlight.length === 0))
+        return (<LoadingScreen/>)
     return (
-        <div >
+        <motion.div 
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+        >
             <BackgroundBlurImage HoveredDisplay={HoveredDisplay}/>
             <div 
                 className="BlurEffect"
@@ -41,7 +49,7 @@ export const Marketplace = () => {
                 <SpotlightDisplay setHoveredDisplay={setHoveredDisplay}/>
                 <BrowseItems/>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

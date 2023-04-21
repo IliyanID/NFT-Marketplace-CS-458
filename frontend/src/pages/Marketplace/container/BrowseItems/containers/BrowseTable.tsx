@@ -9,7 +9,9 @@ export const BrowseTable = (props:{children:JSX.Element[]}) => {
             gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
             margin:'20px'
         }}>
-            {props.children}
+            
+           {props.children}
+            
         </div>
     )
 }
