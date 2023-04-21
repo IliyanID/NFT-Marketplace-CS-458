@@ -30,9 +30,7 @@ export const AssetPage = () => {
 
 
     return (
-        <motion.div 
-        initial={{opacity:0}}
-        animate={{opacity:1}}
+        <div 
         style={{
             height:'100vh',
             display:'grid',
@@ -46,13 +44,16 @@ export const AssetPage = () => {
                 (api.loading || NFT === undefined)?<LoadingScreen inGrid/>:<LoadedAssetPage NFT={NFT}/>
             }
   
-        </motion.div>
+        </div>
     )
 }
 
 const LoadedAssetPage = (props:{NFT:NFT}) => {
     return (
-            <div style={{
+            <motion.div 
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+            style={{
                 display:'grid',
                 gridTemplateAreas:`
                     'picture details'
@@ -69,7 +70,7 @@ const LoadedAssetPage = (props:{NFT:NFT}) => {
                 <ImagePreview NFT={props.NFT}/>
                 <Details NFT={props.NFT}/>
                 <Purchase NFT={props.NFT}/>
-            </div>
+            </motion.div>
     )
 }
 
