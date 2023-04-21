@@ -14,6 +14,7 @@ export const useMarketPlace = () => {
     const getMarketPlace = (call_complete:(response:GetMarketPlaceResponse)=>void) => {
         setLoading(true)
         setTimeout(()=>{
+            console.log(`Retreiving Marketplace data`)
             setLoading(false)
 
             let response:GetMarketPlaceResponse = {
@@ -43,6 +44,7 @@ export const useMarketPlace = () => {
     }
 
     const getAsset = (id:number,call_complete:(response:GetAssetResponse)=>void) => {
+        console.log(`Retreiving Asset with id:${id}`)
         setLoading(true)
         setTimeout(()=>{
             setLoading(false)

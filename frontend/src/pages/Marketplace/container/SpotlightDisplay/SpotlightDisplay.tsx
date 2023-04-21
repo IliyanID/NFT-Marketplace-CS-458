@@ -45,7 +45,7 @@ export const SpotlightDisplay = (props:{setHoveredDisplay:(index:number)=>void})
                                   objectFit:'cover'
                                 }}
                                 src={nft.nft_image} 
-                                alt={nft.owner}
+                                alt={nft.name}
                             />
                             <div style={{
                                 position:'absolute',
@@ -53,7 +53,7 @@ export const SpotlightDisplay = (props:{setHoveredDisplay:(index:number)=>void})
                                 left:'10px',
                                 overflow:'hidden',
                             }}>
-                                <h5 style={{fontWeight:'bolder'}}>{nft.owner}</h5>
+                                <h5 style={{fontWeight:'bolder'}}>{nft.name}</h5>
                                 <div>Price: {nft.priceETH}</div>
                             </div>
                         </div>

@@ -3,6 +3,7 @@ import { AuthForm, RedirectArea } from "../../../components/AuthForm"
 import { ToLogin, ToRegister } from "../components/AuthRedirects"
 
 export const ResetPassword = () => {
+    document.title = `NFT Marketplace - Reset Password`
     return (
         <AuthForm onSubmit={()=>{}}>
             <Input required placeholder="Username"/>

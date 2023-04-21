@@ -10,6 +10,7 @@ import { BarLoader } from "react-spinners"
 
 
 export const Login = () => {
+    document.title = `NFT Marketplace - Login`
     const [username,handleUsernameInput] = useTextInput()
     const [password,handlePasswordInput] = useTextInput()
     const navigate = useNavigate()

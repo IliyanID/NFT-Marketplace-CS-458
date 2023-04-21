@@ -1,6 +1,7 @@
 import { Header } from "../../components/Header"
 
 export const ErrorPage = (props:{error?:string}) => {
+    document.title = `NFT Marketplace ${props.error}`
     return (
         <div style={{
             width:'100vw',

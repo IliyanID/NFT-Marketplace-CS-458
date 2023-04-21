@@ -20,9 +20,10 @@ export const AssetPage = () => {
             return
         }
         api.getAsset(parseInt(id),(response)=>{
-            console.log(response)
-            if(response.NFT)
+            if(response.NFT){
                 setNFT(response.NFT)
+                document.title = `${response.NFT.name} - ${response.NFT.priceETH} ETH`
+            }
         })
     },[])
     

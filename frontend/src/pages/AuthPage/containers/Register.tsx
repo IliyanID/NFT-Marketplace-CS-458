@@ -27,6 +27,7 @@ const FormRejex = {
 }
 
 export const Register = () => {
+    document.title = `NFT Marketplace - Register`
     const default_form = {
         username:'',
         password:'',

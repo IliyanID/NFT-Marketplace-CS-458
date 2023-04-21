@@ -21,6 +21,7 @@ export const Marketplace = () => {
             if(response.Spotlight && response.Spotlight.length > 0)
                 newState.Spotlight = response.Spotlight
             state.setState(newState)
+            document.title = 'NFT Marketplace'
         })
     },[])
     if(api.loading && (state.BrowseItems.length === 0 || state.Spotlight.length === 0))
