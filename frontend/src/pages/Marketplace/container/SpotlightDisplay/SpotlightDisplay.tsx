@@ -1,9 +1,12 @@
 import './pulsatingDot.css'
-import { SpotlightDisplayMock } from '../../../../static/mock/SpotlightDisplayMock';
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MarketPlaceContext } from '../../../../context/MarketPlaceContext';
 export const SpotlightDisplay = (props:{setHoveredDisplay:(index:number)=>void}) => {
     const navigate = useNavigate()
+    const {Spotlight} = useContext(MarketPlaceContext)
+
     return (
         <div style={{
             borderRadius:'20px',
@@ -16,7 +19,7 @@ export const SpotlightDisplay = (props:{setHoveredDisplay:(index:number)=>void})
             gap:'20px'
         }}>
             {
-                SpotlightDisplayMock.map((nft,index)=>{
+                Spotlight.map((nft,index)=>{
                     const id = `ScrollSpotlight=${index}`
                     return (
                         <div 
@@ -41,7 +44,7 @@ export const SpotlightDisplay = (props:{setHoveredDisplay:(index:number)=>void})
                                 style={{
                                   objectFit:'cover'
                                 }}
-                                src={nft.nft} 
+                                src={nft.nft_image} 
                                 alt={nft.owner}
                             />
                             <div style={{
@@ -51,7 +54,7 @@ export const SpotlightDisplay = (props:{setHoveredDisplay:(index:number)=>void})
                                 overflow:'hidden',
                             }}>
                                 <h5 style={{fontWeight:'bolder'}}>{nft.owner}</h5>
-                                <div>Price: {nft.price}</div>
+                                <div>Price: {nft.priceETH}</div>
                             </div>
                         </div>
                     )

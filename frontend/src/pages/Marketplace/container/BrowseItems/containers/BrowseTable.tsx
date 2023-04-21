@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
-import { NFT } from "../../../../../types/NFT"
 import { useNavigate } from "react-router-dom"
+import { NFT } from "../../../../../../../CommonTypes/CommonTypes"
 
 export const BrowseTable = (props:{children:JSX.Element[]}) => {
     return(
@@ -18,8 +18,8 @@ export const BrowseTable = (props:{children:JSX.Element[]}) => {
 
 export const BrowseTableTr = (props:{index:number,nft:NFT}) => {
     const id = `BrowseTableTr=${props.index}`
-    let price = String(props.nft.price)
-    if(props.nft.price <= .01)
+    let price = String(props.nft.priceETH)
+    if(props.nft.priceETH <= .01)
         price = '< 0.01'
     const navigate = useNavigate()
     return (
@@ -38,8 +38,8 @@ export const BrowseTableTr = (props:{index:number,nft:NFT}) => {
             }}
         >
             <div style={{fontSize:'25px'}}>{props.index+1}.</div>
-            <img style={{width:'80px',height:'80px',borderRadius:'15px'}} src={props.nft.nft} alt={'test'}/>
-            <div style={{fontWeight:'bold'}}>{props.nft.owner}</div>
+            <img style={{width:'80px',height:'80px',borderRadius:'15px'}} src={props.nft.nft_image} alt={'test'}/>
+            <div style={{fontWeight:'bold'}}>{props.nft.name}</div>
             <div style={{fontWeight:"bold"}}>{price} ETH</div>
             
         </motion.div>

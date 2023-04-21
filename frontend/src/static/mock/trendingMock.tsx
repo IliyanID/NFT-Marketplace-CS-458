@@ -1,4 +1,4 @@
-import { NFT } from '../../types/NFT'
+import { NFT } from '../../../../CommonTypes/CommonTypes'
 import test_image from '../images/test_image.avif'
 import test_image2 from '../images/test_image2.avif'
 import test_image3 from '../images/test_image3.avif'
@@ -9,38 +9,50 @@ import test_image6 from '../images/test_image6.avif'
 export const trendingMock:NFT[] = [
     {
         id:0,
-        owner:'ArbShibAI',
-        price:.00001,
-        nft:test_image
+        name:'ArbShibAI',
+        owner:'Owner1',
+        priceETH:.00001,
+        priceUSD:20.20,
+        nft_image:test_image
     },
     {
         id:1,
-        owner:'Nakamigos',
-        price:.41,
-        nft:test_image2
+        name:'Nakamigos',
+        owner:'Owner2',
+        priceETH:.41,
+        priceUSD:35.2,
+        nft_image:test_image2
     },
     {
         id:2,
-        owner:'XXD34D',
-        price:.02,
-        nft:test_image3
+        name:'XXD34D',
+        owner:'Owner3',
+        priceETH:.02,
+        priceUSD:52.2,
+        nft_image:test_image3
     },
     {
         id:3,
-        owner:'Outlaws',
-        price:.03,
-        nft:test_image4
+        name:'Outlaws',
+        owner:'Owner4',
+        priceETH:.03,
+        priceUSD:11.2,
+        nft_image:test_image4
     },
     {
         id:4,
-        owner:'Muppeth',
-        price:.05,
-        nft:test_image5
+        name:'Muppeth',
+        owner:'Owner1',
+        priceETH:.05,
+        priceUSD:22.22,
+        nft_image:test_image5
     },
     {
         id:5,
-        owner:'Mutant Ape Yacht Club',
-        price:12.11,
-        nft:test_image6
+        name:'Mutant Ape Yacht Club',
+        owner:'Owner3',
+        priceETH:12.11,
+        priceUSD:11.2,
+        nft_image:test_image6
     }
 ]

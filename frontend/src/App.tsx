@@ -5,6 +5,7 @@ import { AuthPage } from './pages/AuthPage/AuthPage';
 import { Marketplace } from './pages/Marketplace/Marketplace';
 import { UserContextProvider } from './context/UserContext';
 import { AssetPage } from './pages/Asset/AssetPage';
+import { MarketPlaceContextProvider } from './context/MarketPlaceContext';
 
 function App() {
 
@@ -13,14 +14,14 @@ function App() {
   return (
     <AnimatePresence>
       <UserContextProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route index element={<Marketplace/>}/>
-            <Route path="asset/*" element={<AssetPage/>}/>
-            <Route path="auth/*" element={<AuthPage/>}/>
-            <Route path="*" element={<ErrorPage error="404 Not Found"/>}/>
-          </Routes>
-        </BrowserRouter>
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<MarketPlaceContextProvider><Marketplace/></MarketPlaceContextProvider>}/>
+              <Route path="asset/*" element={<AssetPage/>}/>
+              <Route path="auth/*" element={<AuthPage/>}/>
+              <Route path="*" element={<ErrorPage error="404 Not Found"/>}/>
+            </Routes>
+          </BrowserRouter>
       </UserContextProvider>
     </AnimatePresence>
   );
