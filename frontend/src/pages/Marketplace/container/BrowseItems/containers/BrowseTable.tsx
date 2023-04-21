@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom"
-import { NFT } from "../../../../../../../CommonTypes/CommonTypes"
+import { NFT } from "../../../../../CommonTypes/CommonTypes"
 
 export const BrowseTable = (props:{children:JSX.Element[]}) => {
     return(

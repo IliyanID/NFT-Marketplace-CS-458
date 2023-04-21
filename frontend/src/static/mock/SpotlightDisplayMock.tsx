@@ -3,7 +3,7 @@ import testImage7 from '../images/test_image7.avif'
 import testImage9 from '../images/test_image9.avif'
 //import testImage10 from '../images/test_image10.avif'
 import testImage11 from '../images/test_image11.avif'
-import { NFT } from '../../../../CommonTypes/CommonTypes'
+import { NFT } from '../../CommonTypes/CommonTypes'
 
 export const SpotlightDisplayMock:NFT[] = [
     {

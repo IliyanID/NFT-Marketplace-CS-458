@@ -1,4 +1,4 @@
-import { NFT } from '../../../../CommonTypes/CommonTypes'
+import { NFT } from '../../CommonTypes/CommonTypes'
 import test_image from '../images/test_image.avif'
 import test_image2 from '../images/test_image2.avif'
 import test_image3 from '../images/test_image3.avif'

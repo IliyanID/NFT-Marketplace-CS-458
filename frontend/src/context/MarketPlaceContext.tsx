@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { NFT } from "../../../CommonTypes/CommonTypes";
+import { NFT } from "../CommonTypes/CommonTypes";
 
 export type MarketPlaceState = {
     Spotlight:NFT[],
