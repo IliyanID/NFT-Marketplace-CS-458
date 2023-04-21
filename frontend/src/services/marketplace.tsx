@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { GetMarketPlaceRequest, GetMarketPlaceResponse } from 'CommonTypes/MarketPlaceTypes'
-import { STATUS } from "CommonTypes/CommonTypes"
+import { GetMarketPlaceResponse } from '../CommonTypes/MarketPlaceTypes'
+import { STATUS } from "../CommonTypes/CommonTypes"
 import { SpotlightDisplayMock } from "../static/mock/SpotlightDisplayMock"
 import { trendingMock } from "../static/mock/trendingMock"
 
@@ -20,7 +20,7 @@ export const useMarketPlace = () => {
             }
             switch(API_STATUS){
                 case STATUS.success:
-                    response.Spotlight = SpotlightDisplayMock,
+                    response.Spotlight = SpotlightDisplayMock
                     response.BrowseItems = trendingMock
                     break;
                 case STATUS.info:
