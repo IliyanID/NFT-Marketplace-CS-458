@@ -1,0 +1,4 @@
+FROM node:19-alpine
+COPY ./build .
+ENTRYPOINT npx serve -l 3000
+EXPOSE 3000
