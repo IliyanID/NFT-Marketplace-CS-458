@@ -7,6 +7,11 @@ import { LoadingScreen } from 'src/components/LoadingScreen'
 import { motion } from 'framer-motion'
 import { ErrorPage } from '../Errorpage/ErrorPage'
 import { useParams, useNavigate } from 'react-router-dom'
+import { init } from '../../services/lib/ethers'
+
+let buyNFT:any = undefined
+if(window.ethereum !== undefined)
+    buyNFT = init(window.ethereum).buyNFT
 
 export const AssetPage = () => {
     const api = useMarketPlace()
@@ -27,7 +32,10 @@ export const AssetPage = () => {
         })
     },[])
     
-
+    //@ts-ignore
+    if(window.ethereum === undefined){
+        return <ErrorPage error='Web3 wallet not installed. Please install and link your wallet.'/>
+    }
 
     return (
         <div 
@@ -83,6 +91,17 @@ const Details = (props:{NFT:NFT}) => {
 }
 
 const Purchase = (props:{NFT:NFT}) => {
+    const { id } = useParams();
+
+    const buyToken = async () => {
+        try {
+            await buyNFT(id);
+            alert("you have successfully bought the token!");
+            window.location.reload()
+        } catch (e) {
+            console.error(e)
+        }
+    }
     return (
         <div 
             style={{
@@ -104,7 +123,7 @@ const Purchase = (props:{NFT:NFT}) => {
                 <div style={{color:'var(--accent-color)'}}>${props.NFT.priceUSD}</div>
             </div>
             <div style={{display:'flex',gap:'20px',width:'100%',marginTop:'20px'}}>
-                <Button style={{width:'100%'}} color="primary">Buy</Button>
+                <Button onClick={buyToken} style={{width:'100%'}} color="primary">Buy</Button>
                 <Button style={{width:'100%'}}>Add to Cart</Button>
 
             </div>

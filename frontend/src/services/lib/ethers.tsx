@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import MarketplaceJSON from "../../static/contracts/Marketplace.json";
 import NFTJSON from "../../static/contracts/NFT.json";
-const { mktAddress, nftAddress } = require("../deploy");
+import { mktAddress, nftAddress } from "./deploy";
 
 const balanceInEth = (balance:any) => {
     const array = balance.split(".")
@@ -9,22 +9,21 @@ const balanceInEth = (balance:any) => {
     return array[0].concat(`.${decimals}`) 
 }
 
-//@ts-ignore
-export const init = web3 => {
 
-    //@ts-ignore
+export const init = (web3: ethers.providers.ExternalProvider | ethers.providers.JsonRpcFetchFunc) => {
+
+    
     const provider = new ethers.providers.Web3Provider(web3);
     const signer = provider.getSigner();
     const MKTContract = new ethers.Contract(mktAddress, MarketplaceJSON.abi, signer);
     const NFTContract = new ethers.Contract(nftAddress, NFTJSON.abi, signer);
-    //@ts-ignore
     const price = ethers.utils.parseUnits("0.0001", "ether");
     return {
         // read-only methods
 
         fetchAll: async () => {
             let current = await NFTContract.getCurrentToken();
-            //@ts-ignore
+            
             let count = ethers.BigNumber.from(current).toNumber();
             let tokens:any[] = [];
             for(let i = 0 ; i < count ; i++) {
@@ -32,7 +31,7 @@ export const init = web3 => {
                 tokens = [...tokens, token];
             }
             return await Promise.all(tokens.map(async token => {
-                //@ts-ignore
+                
                 let price = ethers.utils.formatUnits(token.price.toString(), 'ether');
                 let item = {
                     price,
@@ -51,11 +50,11 @@ export const init = web3 => {
             return new Promise(async resolve => {
                 const account = await signer.getAddress();
                 provider.getBalance(account).then((balance:any) => {
-                    //@ts-ignore
+                    
                     const balanceEth = ethers.utils.formatEther(balance)
                     const accountBalance = balanceInEth(balanceEth);
                     //@ts-ignore
-                    window.ethereum.on('accountsChanged', function (accounts){
+                    window.ethereum.on('accountsChanged', function (accounts:any){
                         window.location.reload()
                     })
                     resolve({ admin: account, balance: accountBalance })
@@ -68,7 +67,7 @@ export const init = web3 => {
             return new Promise(async resolve => {
                 try {
                     const currentID = await NFTContract.getCurrentToken();
-                    //@ts-ignore
+                    
                     const tokenId = ethers.BigNumber.from(currentID).toNumber();
                     await NFTContract.mint(tokenURI)    
                     resolve({ tokenId })
@@ -104,7 +103,8 @@ export const init = web3 => {
                     })
                     await transaction.wait()
                     resolve(undefined)
-                } catch(e) {
+                } catch(e:any) {
+                    alert(e.toString())
                     console.error(e)
                 }
             })
@@ -151,7 +151,7 @@ export const init = web3 => {
             return new Promise(async resolve => {
                try {
                     const balance = await MKTContract.getMarketPlaceBalance();
-                    //@ts-ignore
+                    
                     const contractBalance = ethers.utils.formatEther(balance)
                     resolve({contractBalance, account: args[0] })
                } catch (e) {
@@ -172,7 +172,7 @@ export const init = web3 => {
         getItemsSold: (...args:any) => {
           return new Promise(async resolve => {
             const sold = await MKTContract.getItemsSold()
-            //@ts-ignore
+            
             const itemsSold = ethers.BigNumber.from(sold).toNumber()
             resolve({itemsSold, ...args[0] })
           })
